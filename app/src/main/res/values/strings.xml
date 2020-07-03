@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">MyVocabulary</string>
+    <string name="btn_add">Добавить слова</string>
+    <string name="btn_learn">Учить!</string>
+    <string name="txt_welcome">Добро пожаловать</string>
+    <string name="btn_end">Закончить</string>
+    <string name="about_text">
+        У лукоморья дуб зеленый; \n
+        Златая цепь на дубе том: \n
+        И днем и ночью <b>кот ученый</b> \n
+        Все ходит по цепи кругом; \n
+        Идет <b>направо</b> - песнь заводит, \n
+        <b>Налево</b> - сказку говорит.
+    </string>
+
+
 </resources>
