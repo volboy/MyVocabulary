@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(USER_NAME, user);
                 startActivityForResult(intent, REQUEST_CODE);
                 break;
+            case R.id.button:
+                intent=new Intent(MainActivity.this, ExperimentActivity.class);
+                startActivity(intent);
+                break;
         }
 
 
