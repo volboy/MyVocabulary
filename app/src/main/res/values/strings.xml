@@ -22,5 +22,9 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
+    <srting name="learn_mode_one">Рус->Eng</srting>
+    <srting name="learn_mode_two">Eng->Рус</srting>
+    <srting name="learn_mode_one">Случайно</srting>
+
 
 </resources>
