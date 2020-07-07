@@ -1,13 +1,18 @@
 package com.volboy.myvocabulary;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
     public static final  String USER_NAME="com.volboy.myvocabulary.USER_NAME"; //ключ для  intent AddActivity
@@ -20,6 +25,38 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txtWelcome=findViewById(R.id.textWelcome);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //получаем индентификатор выбранного пункта меню
+        int id=item.getItemId();
+
+        switch (id){
+            case R.id.mode_one:
+                txtWelcome.setText("Прямой перевод");
+                item.setChecked(true);
+                return true;
+
+            case R.id.mode_two:
+                txtWelcome.setText("Обратный перевод");
+                item.setChecked(true);
+                return true;
+            case R.id.mode_three:
+                txtWelcome.setText("Случайно");
+                item.setChecked(true);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
 
     }
 
