@@ -3,6 +3,7 @@ package com.volboy.myvocabulary;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.zip.Inflater;
 
@@ -77,9 +79,43 @@ public class MainActivity extends AppCompatActivity {
                 intent=new Intent(MainActivity.this, ExperimentActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.button2:
+                showPopupMenu(view);
+                break;
         }
 
 
+    }
+
+    private void showPopupMenu(View view){
+        PopupMenu popupMenu=new PopupMenu(this, view);
+        popupMenu.inflate(R.menu.popupmenu);
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.pmode_one:
+                        txtWelcome.setText("Режим один из всплывающего меню");
+                        return true;
+                    case R.id.pmode_two:
+                        txtWelcome.setText("Режим два из всплывающего меню");
+                        return true;
+                    case R.id.pmode_three:
+                        txtWelcome.setText("Режим три из всплывающего меню");
+                        return true;
+                    default:
+                        return false;
+                }
+
+            }
+        });
+        popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
+            @Override
+            public void onDismiss(PopupMenu menu) {
+                Toast.makeText(getApplicationContext(), "onDismiss", Toast.LENGTH_LONG).show();
+            }
+        });
+        popupMenu.show();
     }
 
 
