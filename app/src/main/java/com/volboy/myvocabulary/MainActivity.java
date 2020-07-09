@@ -29,8 +29,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txtWelcome=findViewById(R.id.textWelcome);
+        if (savedInstanceState!=null){
+            txtWelcome.setText(savedInstanceState.getString("MESSAGE"));
+        }
 
     }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("MESSAGE", "Продолжаем");
+        super.onSaveInstanceState(outState);
+
+
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -124,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
         popupMenu.show();
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -138,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //обратотка аппаратной клавиши Back
     private static long back_pressed;
     @Override
     public void onBackPressed(){
