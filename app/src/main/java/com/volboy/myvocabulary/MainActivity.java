@@ -2,9 +2,11 @@ package com.volboy.myvocabulary;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -135,4 +137,36 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    private static long back_pressed;
+    @Override
+    public void onBackPressed(){
+        //openQuitDialog();
+        if (back_pressed + 2000>System.currentTimeMillis())
+            super.onBackPressed();
+        else
+            Toast.makeText(MainActivity.this, "Нажмите Back еще раз для выхода", Toast.LENGTH_SHORT).show();
+        back_pressed=System.currentTimeMillis();
+
+    }
+
+    private void openQuitDialog(){
+        AlertDialog.Builder quitDialog=new AlertDialog.Builder(MainActivity.this);
+        quitDialog.setTitle("Выход: Вы уверены?");
+
+        quitDialog.setPositiveButton("Да", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                finish();
+            }
+        });
+        quitDialog.setNegativeButton("Нет", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+
+            }
+        });
+        quitDialog.show();
+    }
 }
+
