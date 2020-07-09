@@ -82,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button2:
                 showPopupMenu(view);
                 break;
+            case R.id.button3:
+                intent=new Intent(MainActivity.this, WebViewPage.class);
+                startActivity(intent);
+                break;
         }
 
 
