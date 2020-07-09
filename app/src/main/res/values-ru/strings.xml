@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">MyVocabulary</string>
-    <string name="btn_add">Add words</string>
-    <string name="btn_learn">Learn!</string>
-    <string name="txt_welcome">Welcome</string>
-    <string name="btn_end">End</string>
+    <string name="btn_add">Добавить слова</string>
+    <string name="btn_learn">Учить!</string>
+    <string name="txt_welcome">Добро пожаловать</string>
+    <string name="btn_end">Закончить</string>
     <string name="about_text">
         У лукоморья дуб зеленый; \n
         Златая цепь на дубе том: \n
@@ -25,7 +25,7 @@
     <string name="action_settings">Настройки</string>
     <string name="mode_one">Рус->Eng</string>
     <string name="mode_two">Eng->Рус</string>
-    <string name="mode_three">Random</string>
+    <string name="mode_three">Случайно</string>
 
 
 </resources>
