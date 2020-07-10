@@ -136,6 +136,10 @@ public class MainActivity extends AppCompatActivity {
                 intent=new Intent(MainActivity.this, WebViewPage.class);
                 startActivity(intent);
                 break;
+            case R.id.button4:
+                intent=new Intent(MainActivity.this, NoteActivity.class);
+                startActivity(intent);
+                break;
         }
 
 
