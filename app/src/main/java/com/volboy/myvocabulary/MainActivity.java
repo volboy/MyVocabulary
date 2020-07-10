@@ -6,8 +6,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,6 +23,10 @@ import java.util.zip.Inflater;
 public class MainActivity extends AppCompatActivity {
     public static final  String USER_NAME="com.volboy.myvocabulary.USER_NAME"; //ключ для  intent AddActivity
     private static final int REQUEST_CODE=0; //для intent LearnActivity
+    public static final String APP_PREF="vocsettings"; //имя файла настроек
+    public static final String APP_LEARN_COUNTER="0"; //переменная для подсчета выученных слов
+    private SharedPreferences vocSettings; //экземпляр класса для работы с настройками
+    public int learnCounter;
     String user="Иванов_Иван";
     TextView txtWelcome;
 
@@ -29,20 +35,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txtWelcome=findViewById(R.id.textWelcome);
+        vocSettings=getSharedPreferences(APP_PREF, Context.MODE_PRIVATE); //инициализируем объект для работы с настройками, передаем название файла и режим доступа
+
+
         if (savedInstanceState!=null){
             txtWelcome.setText(savedInstanceState.getString("MESSAGE"));
         }
 
+
     }
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
+    protected void onResume() {
+        super.onResume();
+
+        if (vocSettings.contains(APP_LEARN_COUNTER)){
+            //получаем данные из настроек
+            learnCounter=vocSettings.getInt(APP_LEARN_COUNTER, 0);
+            txtWelcome.setText(""+learnCounter);
+
+        }
+        else {
+            txtWelcome.setText(getResources().getString(R.string.txt_welcome));
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        //запоминаем данные
+        learnCounter++;
+        SharedPreferences.Editor editor=vocSettings.edit();
+        editor.putInt(APP_LEARN_COUNTER, learnCounter);
+        editor.apply();
     }
 
     @Override
