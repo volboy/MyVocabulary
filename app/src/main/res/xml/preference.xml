@@ -12,6 +12,15 @@
         android:hint="Введите размер шрифта от 10 до 32"
         android:defaultValue="14sp"
         />
+    <ListPreference
+        android:key="@string/pref_style"
+        android:title="Стиль шрифта"
+        android:summary="Устанавливает стиль для шрифта"
+        android:entries="@array/text_style"
+        android:entryValues="@array/text_style"
+        android:defaultValue="1"
+        android:dialogTitle="Выбирете стиль для шрифта"/>
+
 
 
 </PreferenceScreen>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -44,6 +45,20 @@ public class NoteActivity extends AppCompatActivity {
         //читаем установленное значение из EditTextPreferences
         float textSize=Float.parseFloat(mPref.getString(getString(R.string.pref_size), "20"));
         editText.setTextSize(textSize);
+
+        //читаем установленный стиль шрифта из ListPreferences
+        String regular=mPref.getString(getString(R.string.pref_style), "");
+        int typeFace= Typeface.NORMAL;
+        if (regular.contains("Полужирный")){
+            typeFace=+Typeface.BOLD_ITALIC;
+        }
+        if (regular.contains("Курсив")){
+            typeFace=+Typeface.ITALIC;
+        }
+        if (regular.contains("Жирный")){
+            typeFace=+Typeface.BOLD;
+        }
+        editText.setTypeface(null, typeFace);
     }
 
     //создание опционального меню
