@@ -11,7 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NoteActivity"></activity>
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.volboy.myvocabulary.NEWWORLD"/>
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".NoteActivity" />
         <activity android:name=".WebViewPage" />
         <activity
             android:name=".ExperimentActivity"
@@ -20,7 +29,7 @@
         <activity
             android:name=".mPreferenceActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LearnActivity"
             android:label="@string/btn_learn"

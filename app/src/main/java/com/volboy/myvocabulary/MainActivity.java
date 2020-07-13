@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE=0; //для intent LearnActivity
     public static final String APP_PREF="vocsettings"; //имя файла настроек
     public static final String APP_LEARN_COUNTER="0"; //переменная для подсчета выученных слов
+    public static final String BROADCAST_MESSAGE="com.volboy.myvocabulary.NEWWORLD"; //переменная для подсчета выученных слов
     private SharedPreferences vocSettings; //экземпляр класса для работы с настройками
     public int learnCounter;
     String user="Иванов_Иван";
@@ -139,6 +140,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button4:
                 intent=new Intent(MainActivity.this, NoteActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.button5:
+                intent=new Intent(BROADCAST_MESSAGE);
+                intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+                intent.putExtra("BROADCAST", "ШИРОКОВЕЩАТЕЛЬНОЕ СООБЩЕНИЕ");
+                sendBroadcast(intent);
                 break;
         }
 
