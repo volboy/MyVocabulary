@@ -147,6 +147,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("BROADCAST", "ШИРОКОВЕЩАТЕЛЬНОЕ СООБЩЕНИЕ");
                 sendBroadcast(intent);
                 break;
+            case R.id.button6:
+                intent=new Intent(MainActivity.this, TimeBroadcastActivity.class);
+                startActivity(intent);
+                break;
         }
 
 
